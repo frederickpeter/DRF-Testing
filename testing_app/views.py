@@ -4,6 +4,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import viewsets
 from .models import Category, Brand, Product
 from .serializers import CategorySerializer, RetrieveProductSerializer, UserSerializer, BrandSerializer, ProductSerializer
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 class RegisterView(generics.CreateAPIView):
@@ -28,6 +29,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
 class BrandViewSet(viewsets.ModelViewSet):
     queryset = Brand.objects.all()
     serializer_class = BrandSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class ProductViewSet(viewsets.ModelViewSet):

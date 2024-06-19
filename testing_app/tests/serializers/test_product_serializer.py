@@ -92,9 +92,9 @@ class ProductSerializerTest(APITestCase):
 
 
     def test_nested_serializer_handling(self):
-        category_serializer = CategorySerializer(data=[{'name': 'Electronics'}, {'name': 'Mobile'}], many=True)
+        category_serializer = CategorySerializer(data=[{'name': 'T-shirts'}, {'name': 'Shirts'}], many=True)
         self.assertTrue(category_serializer.is_valid(), category_serializer.errors)
         categories = category_serializer.save()
         self.assertEqual(len(categories), 2)
-        self.assertEqual(categories[0].name, 'Electronics')
-        self.assertEqual(categories[1].name, 'Mobile')
+        self.assertEqual(categories[0].name, 'T-shirts')
+        self.assertEqual(categories[1].name, 'Shirts')
